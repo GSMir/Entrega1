@@ -1,0 +1,17 @@
+---
+title: "Entrega1"
+autor: "Arnau Piferrer, Guillem Serra"
+format: html
+editor: visual
+---
+
+[Repositorio](https://github.com/GSMir/Entrega1.git)
+
+
+## Cargamos las liberías necesarias
+```{r}
+#install.packages("palmerpenguins",dep=TRUE)
+library("palmerpenguins")
+print(penguins, width = 50)
+```
+
