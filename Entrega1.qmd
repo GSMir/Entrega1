@@ -13,5 +13,71 @@ editor: visual
 #install.packages("palmerpenguins",dep=TRUE)
 library("palmerpenguins")
 print(penguins, width = 50)
+nrow(penguins)
+length(penguins)
 ```
+Hay 344 observaciones de pingüinos, y 8 variables diferentes.
+
+##Vamos a mirar cada una de las variables:
+```{r}
+summary(penguins)
+```
+
+### Species
+```{r}
+class(penguins$species)
+```
+Podemos observar que hay 3 espécies diferentes, "Adelie", "Chinstrap" y "Gentoo". Es una variable del tipo "factor".
+
+### Island
+```{r}
+class(penguins$island)
+```
+Podemos observar que hay 3 islas diferentes, "Biscoe", "Dream" y "Torgersen". Es una variable del tipo "factor".
+
+### Bill_length_mm
+```{r}
+class(penguins$bill_length_mm)
+```
+Hace referéncia a la longitud del pico de los pingüinos, en mm. Es una variable del tipo "numeric". Van en un rango de 32.1mm a 59.6mm. Con una media de 43.92mm
+
+
+### Bill_depth_mm
+```{r}
+class(penguins$bill_depth_mm)
+```
+Hace referéncia a la amplitud del pico de los pingüinos, en mm. Es una variable del tipo "numeric". Van en un rango de 13.1mm a 21.5mm. Con una media de 17.15mm.
+
+
+
+### Flipper_length_mm
+```{r}
+class(penguins$flipper_length_mm)
+```
+Hace referéncia a la longitud de las aletas de los pingüinos, en mm. Es una variable del tipo "integer". Van en un rango de 172.0mm a 231.0mm. Con una media de 200.9mm.
+
+### Body_mass_g
+```{r}
+class(penguins$body_mass_g)
+```
+Hace referéncia a la masa de los pingüinos, en g. Es una variable del tipo "integer". Van en un rango de 2700g a 6300g. Con una media de 4202g.
+
+### Sex
+```{r}
+class(penguins$sex)
+```
+Hace referéncia al sexo cromosómico de los pingüinos. Es una variable de tipo "factor", con los valores de Macho y Hembra.
+
+
+### Year
+```{r}
+class(penguins$year)
+```
+Hace referéncia al año de nacimiento de los pingüinos. Va del año 2007 al 2009. Es una variable de tipo "integer"; para trabajar mejor con esta variable la vamos a pasar a tipo "factor".
+
+```{r}
+penguins$year = as.factor(penguins$year)
+```
+
+
 
