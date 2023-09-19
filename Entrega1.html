@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -94,140 +60,115 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><a href="https://github.com/GSMir/Entrega1.git">Repositorio</a></p>
-<section id="cargamos-las-liberías-necesarias" class="level2">
-<h2 class="anchored" data-anchor-id="cargamos-las-liberías-necesarias">Cargamos las liberías necesarias</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("palmerpenguins",dep=TRUE)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"palmerpenguins"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(penguins, <span class="at">width =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 x 8
-   species island    bill_length_mm bill_depth_mm
-   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;
- 1 Adelie  Torgersen           39.1          18.7
- 2 Adelie  Torgersen           39.5          17.4
- 3 Adelie  Torgersen           40.3          18  
- 4 Adelie  Torgersen           NA            NA  
- 5 Adelie  Torgersen           36.7          19.3
- 6 Adelie  Torgersen           39.3          20.6
- 7 Adelie  Torgersen           38.9          17.8
- 8 Adelie  Torgersen           39.2          19.6
- 9 Adelie  Torgersen           34.1          18.1
-10 Adelie  Torgersen           42            20.2
-# i 334 more rows
-# i 4 more variables: flipper_length_mm &lt;int&gt;,
-#   body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
-</div>
-</div>
+<p>Este es el <a href="https://github.com/GSMir/Entrega1.git">repositorio</a> dónde se puede encontrar todo el trabajo realizado en este proyecto.</p>
 <p>Hay 344 observaciones de pingüinos, y 8 variables diferentes.</p>
-</section>
-<section id="vamos-a-mirar-cada-una-de-las-variables" class="level2">
-<h2 class="anchored" data-anchor-id="vamos-a-mirar-cada-una-de-las-variables">Vamos a mirar cada una de las variables:</h2>
+<section id="vamos-a-estudiar-cada-una-de-las-variables" class="level2">
+<h2 class="anchored" data-anchor-id="vamos-a-estudiar-cada-una-de-las-variables">Vamos a estudiar cada una de las variables:</h2>
+<p>Primero de todo veamos que variables tenemos</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      species          island    bill_length_mm  bill_depth_mm  
- Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  
- Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  
- Gentoo   :124   Torgersen: 52   Median :44.45   Median :17.30  
-                                 Mean   :43.92   Mean   :17.15  
-                                 3rd Qu.:48.50   3rd Qu.:18.70  
-                                 Max.   :59.60   Max.   :21.50  
-                                 NA's   :2       NA's   :2      
- flipper_length_mm  body_mass_g       sex           year     
- Min.   :172.0     Min.   :2700   female:165   Min.   :2007  
- 1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  
- Median :197.0     Median :4050   NA's  : 11   Median :2008  
- Mean   :200.9     Mean   :4202                Mean   :2008  
- 3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  
- Max.   :231.0     Max.   :6300                Max.   :2009  
- NA's   :2         NA's   :2                                 </code></pre>
+<pre><code>[1] "bill_depth_mm"     "bill_length_mm"    "body_mass_g"      
+[4] "flipper_length_mm" "island"            "sex"              
+[7] "species"           "year"             </code></pre>
 </div>
 </div>
+<p>Ahora hagamos un estudio de cada una de las variables.</p>
 <section id="species" class="level3">
 <h3 class="anchored" data-anchor-id="species">Species</h3>
+<p>Es una variable del tipo ´r clasevariable´. Hace referéncia la espécie del pingüino.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(penguins<span class="sc">$</span>species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "factor"</code></pre>
+<pre><code>   Adelie Chinstrap    Gentoo 
+      152        68       124 </code></pre>
 </div>
 </div>
-<p>Podemos observar que hay 3 espécies diferentes, “Adelie”, “Chinstrap” y “Gentoo”. Es una variable del tipo “factor”.</p>
+<p>Podemos observar que hay 3 espécies diferentes, “Adelie”, “Chinstrap” y “Gentoo”.</p>
 </section>
 <section id="island" class="level3">
 <h3 class="anchored" data-anchor-id="island">Island</h3>
+<p>Es una variable del tipo ´r clasevariable´. Hace referéncia a la isla en la que viven los pingüinos</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(penguins<span class="sc">$</span>island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "factor"</code></pre>
+<pre><code>   Biscoe     Dream Torgersen 
+      168       124        52 </code></pre>
 </div>
 </div>
-<p>Podemos observar que hay 3 islas diferentes, “Biscoe”, “Dream” y “Torgersen”. Es una variable del tipo “factor”.</p>
+<p>Podemos observar que hay 3 islas diferentes, “Biscoe”, “Dream” y “Torgersen”.</p>
 </section>
 <section id="bill_length_mm" class="level3">
 <h3 class="anchored" data-anchor-id="bill_length_mm">Bill_length_mm</h3>
+<p>Es una variable del tipo ´r clasevariable´.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(penguins<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "numeric"</code></pre>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  32.10   39.23   44.45   43.92   48.50   59.60       2 </code></pre>
 </div>
 </div>
-<p>Hace referéncia a la longitud del pico de los pingüinos, en mm. Es una variable del tipo “numeric”. Van en un rango de 32.1mm a 59.6mm. Con una media de 43.92mm</p>
+<p>Hace referéncia a la longitud del pico de los pingüinos, en mm. Va en un rango de 32.1mm a 59.6mm. Con una media de 43.92mm, con 44.45mm de mediana, y una desviación típica de 5.46.</p>
 </section>
 <section id="bill_depth_mm" class="level3">
 <h3 class="anchored" data-anchor-id="bill_depth_mm">Bill_depth_mm</h3>
+<p>Es una variable del tipo ´r clasevariable´.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(penguins<span class="sc">$</span>bill_depth_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "numeric"</code></pre>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  13.10   15.60   17.30   17.15   18.70   21.50       2 </code></pre>
 </div>
 </div>
-<p>Hace referéncia a la amplitud del pico de los pingüinos, en mm. Es una variable del tipo “numeric”. Van en un rango de 13.1mm a 21.5mm. Con una media de 17.15mm.</p>
+<p>Hace referéncia a la amplitud del pico de los pingüinos, en mm. Va en un rango de 13.1mm a 21.5mm. Con una media de 17.15mm, con 17.30mm de mediana y una desviación típica de 1.97.</p>
 </section>
 <section id="flipper_length_mm" class="level3">
 <h3 class="anchored" data-anchor-id="flipper_length_mm">Flipper_length_mm</h3>
+<p>Es una variable del tipo ´r clasevariable´.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(penguins<span class="sc">$</span>flipper_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "integer"</code></pre>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  172.0   190.0   197.0   200.9   213.0   231.0       2 </code></pre>
 </div>
 </div>
-<p>Hace referéncia a la longitud de las aletas de los pingüinos, en mm. Es una variable del tipo “integer”. Van en un rango de 172.0mm a 231.0mm. Con una media de 200.9mm.</p>
+<p>Hace referéncia a la longitud de las aletas de los pingüinos, en mm. Va en un rango de 172.0mm a 231.0mm. Con una media de 200.9mm, con 197mm de mediana y una desviación típica de 14.06.</p>
 </section>
 <section id="body_mass_g" class="level3">
 <h3 class="anchored" data-anchor-id="body_mass_g">Body_mass_g</h3>
+<p>Es una variable del tipo ´r clasevariable´.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(penguins<span class="sc">$</span>body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "integer"</code></pre>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   2700    3550    4050    4202    4750    6300       2 </code></pre>
 </div>
 </div>
-<p>Hace referéncia a la masa de los pingüinos, en g. Es una variable del tipo “integer”. Van en un rango de 2700g a 6300g. Con una media de 4202g.</p>
+<p>Hace referéncia al peso de los pingüinos, en g. Va en un rango de 2700g a 6300g. Con una media de 4202g, con 4050g de mediana y una desviación típica de 801.95.</p>
 </section>
 <section id="sex" class="level3">
 <h3 class="anchored" data-anchor-id="sex">Sex</h3>
+<p>Es una variable del tipo ´r clasevariable´. Hace referéncia al sexo cromosómico de los pingüinos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(penguins<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "factor"</code></pre>
+<pre><code>female   male   NA's 
+   165    168     11 </code></pre>
 </div>
 </div>
-<p>Hace referéncia al sexo cromosómico de los pingüinos. Es una variable de tipo “factor”, con los valores de Macho y Hembra.</p>
+<p>Podemos observar que hay 165 observaciones de hembras, y 168 observaciones de machos.</p>
 </section>
 <section id="year" class="level3">
 <h3 class="anchored" data-anchor-id="year">Year</h3>
+<p>Es una variable del tipo ´r clasevariable´. Hace referéncia al año en que nacieron los pingüinos. Observemso que esta variable tendría más sentido tratarla como factor, y para ejectura el summary lo trataremos como tal.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(penguins<span class="sc">$</span>year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "integer"</code></pre>
+<pre><code>2007 2008 2009 
+ 110  114  120 </code></pre>
 </div>
 </div>
-<p>Hace referéncia al año de nacimiento de los pingüinos. Va del año 2007 al 2009. Es una variable de tipo “integer”; para trabajar mejor con esta variable la vamos a pasar a tipo “factor”.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>penguins<span class="sc">$</span>year <span class="ot">=</span> <span class="fu">as.factor</span>(penguins<span class="sc">$</span>year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>Podemos observar que los pingüinos, del estudio, nacieron en 3 años diferentes; 2007, 2008, 2009.</p>
 </section>
+</section>
+<section id="veamos-ahora-algunos-gráficos" class="level2">
+<h2 class="anchored" data-anchor-id="veamos-ahora-algunos-gráficos">Veamos ahora algunos gráficos:</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Entrega1_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 <section id="estudio-inferencial" class="level2">
 <h2 class="anchored" data-anchor-id="estudio-inferencial">Estudio inferencial</h2>
@@ -235,14 +176,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="media-de-la-longitud-de-los-picos">Media de la longitud de los picos</h3>
 <p>Vamos a hacer un boxplot para comprobar si hay diferencias significativas entre las medias de las longitudes de los picos en referencia a las especies de pingüinos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(penguins<span class="sc">$</span>bill_length_mm<span class="sc">~</span>penguins<span class="sc">$</span>species,<span class="at">ylab =</span> <span class="st">"Longitud del pico"</span>,<span class="at">xlab =</span> <span class="st">"Especies"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Entrega1_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+<p><img src="Entrega1_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Observamos que la mediana de Adelie es bastante más pequeña que el resto, vamos a comprobarlo mediante un t.test.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(penguins<span class="sc">$</span>bill_length_mm[penguins<span class="sc">$</span>species<span class="sc">==</span><span class="st">"Adelie"</span>],penguins<span class="sc">$</span>bill_length_mm[penguins<span class="sc">$</span>species<span class="sc">==</span><span class="st">"Gentoo"</span>],<span class="at">conf.level =</span> <span class="fl">0.95</span>,<span class="at">alternative =</span> <span class="st">"less"</span>,<span class="at">paired =</span> <span class="cn">FALSE</span>,<span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -256,7 +195,6 @@ sample estimates:
 mean of x mean of y 
  38.79139  47.50488 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(penguins<span class="sc">$</span>bill_length_mm[penguins<span class="sc">$</span>species<span class="sc">==</span><span class="st">"Adelie"</span>],penguins<span class="sc">$</span>bill_length_mm[penguins<span class="sc">$</span>species<span class="sc">==</span><span class="st">"Chinstrap"</span>],<span class="at">conf.level =</span> <span class="fl">0.95</span>,<span class="at">alternative =</span> <span class="st">"less"</span>,<span class="at">paired =</span> <span class="cn">FALSE</span>,<span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -274,19 +212,16 @@ mean of x mean of y
 <p>Podemos observar que los dos t.test nos sale un p-valor mas pequeño que 0.05, por lo tanto podemos afirmar la hipótesis inicial; la media de longitud de los picos de la especia “Adelie” es más pequeña que la de las otras dos.</p>
 <p>Ahora vamos a observar si hay diferencias significativas de la longitud del pico entre una misma especie y las islas donde habitan. Primero vamos a comprobar en que islas viven las diferentes especies de pingüinos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(penguins<span class="sc">$</span>island[penguins<span class="sc">$</span>species<span class="sc">==</span><span class="st">"Adelie"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Biscoe     Dream Torgersen 
        44        56        52 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(penguins<span class="sc">$</span>island[penguins<span class="sc">$</span>species<span class="sc">==</span><span class="st">"Gentoo"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Biscoe     Dream Torgersen 
       124         0         0 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(penguins<span class="sc">$</span>island[penguins<span class="sc">$</span>species<span class="sc">==</span><span class="st">"Chinstrap"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Biscoe     Dream Torgersen 
@@ -295,15 +230,14 @@ mean of x mean of y
 </div>
 <p>Observamos que la única especie que habita en más de una isla es la “Adelie”, por lo tanto realizamos un boxplot de las longitudes del pico centrándonos en esa especie y las islas donde habitan.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(penguins<span class="sc">$</span>bill_length_mm[penguins<span class="sc">$</span>species<span class="sc">==</span><span class="st">"Adelie"</span>]<span class="sc">~</span>penguins<span class="sc">$</span>island[penguins<span class="sc">$</span>species<span class="sc">==</span><span class="st">"Adelie"</span>],<span class="at">ylab =</span> <span class="st">"Longitud del pico de Adelie"</span>,<span class="at">xlab =</span> <span class="st">"Islas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Entrega1_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+<p><img src="Entrega1_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>No podemos obervar diferencias significativas.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Entrega1_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
+<p><img src="Entrega1_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>

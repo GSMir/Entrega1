@@ -5,91 +5,194 @@ format: html
 editor: visual
 ---
 
-[Repositorio](https://github.com/GSMir/Entrega1.git)
+Este es el [repositorio](https://github.com/GSMir/Entrega1.git) dónde se puede encontrar todo el trabajo realizado en este proyecto.
 
-## Cargamos las liberías necesarias
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
 
-```{r}
+
+```{r cargar-librerias}
 #install.packages("palmerpenguins",dep=TRUE)
 library("palmerpenguins")
-print(penguins, width = 50)
 ```
-
-Hay 344 observaciones de pingüinos, y 8 variables diferentes.
-
-## Vamos a mirar cada una de las variables:
 
 ```{r}
-summary(penguins)
+nvariables = length(penguins)
+nobservaciones = nrow(penguins)
 ```
+
+
+Hay `r nobservaciones` observaciones de pingüinos, y `r nvariables` variables diferentes.
+
+## Vamos a estudiar cada una de las variables:
+
+Primero de todo veamos que variables tenemos
+```{r}
+ls(penguins)
+```
+Ahora hagamos un estudio de cada una de las variables.
+
 
 ### Species
 
 ```{r}
-class(penguins$species)
+clasevariable = class(penguins$species)
 ```
 
-Podemos observar que hay 3 espécies diferentes, "Adelie", "Chinstrap" y "Gentoo". Es una variable del tipo "factor".
+Es una variable del tipo ´r clasevariable´. Hace referéncia la espécie del pingüino.
+
+```{r}
+summary(penguins$species)
+```
+Podemos observar que hay 3 espécies diferentes, "Adelie", "Chinstrap" y "Gentoo". 
 
 ### Island
 
 ```{r}
-class(penguins$island)
+clasevariable = class(penguins$island)
 ```
 
-Podemos observar que hay 3 islas diferentes, "Biscoe", "Dream" y "Torgersen". Es una variable del tipo "factor".
+Es una variable del tipo ´r clasevariable´. Hace referéncia a la isla en la que viven los pingüinos
+
+```{r}
+summary(penguins$island)
+```
+Podemos observar que hay 3 islas diferentes, "Biscoe", "Dream" y "Torgersen".
 
 ### Bill_length_mm
 
 ```{r}
-class(penguins$bill_length_mm)
+clasevariable = class(penguins$bill_length_mm)
 ```
 
-Hace referéncia a la longitud del pico de los pingüinos, en mm. Es una variable del tipo "numeric". Van en un rango de 32.1mm a 59.6mm. Con una media de 43.92mm
+Es una variable del tipo ´r clasevariable´.
+
+```{r}
+summary(penguins$bill_length_mm)
+desviacion = sd(na.omit(penguins$bill_length_mm))
+```
+Hace referéncia a la longitud del pico de los pingüinos, en mm. Va en un rango de 32.1mm a 59.6mm. Con una media de 43.92mm, con 44.45mm de mediana, y una desviación típica de `r round(desviacion, 2)`.
 
 ### Bill_depth_mm
 
 ```{r}
-class(penguins$bill_depth_mm)
+clasevariable = class(penguins$bill_depth_mm)
 ```
 
-Hace referéncia a la amplitud del pico de los pingüinos, en mm. Es una variable del tipo "numeric". Van en un rango de 13.1mm a 21.5mm. Con una media de 17.15mm.
+Es una variable del tipo ´r clasevariable´.
+
+```{r}
+summary(penguins$bill_depth_mm)
+desviacion = sd(na.omit(penguins$bill_depth_mm))
+```
+
+Hace referéncia a la amplitud del pico de los pingüinos, en mm. Va en un rango de 13.1mm a 21.5mm. Con una media de 17.15mm, con 17.30mm de mediana y una desviación típica de `r round(desviacion, 2)`.
 
 ### Flipper_length_mm
 
 ```{r}
-class(penguins$flipper_length_mm)
+clasevariable = class(penguins$flipper_length_mm)
 ```
 
-Hace referéncia a la longitud de las aletas de los pingüinos, en mm. Es una variable del tipo "integer". Van en un rango de 172.0mm a 231.0mm. Con una media de 200.9mm.
+Es una variable del tipo ´r clasevariable´.
+
+```{r}
+summary(penguins$flipper_length_mm)
+desviacion = sd(na.omit(penguins$flipper_length_mm))
+```
+
+Hace referéncia a la longitud de las aletas de los pingüinos, en mm. Va en un rango de 172.0mm a 231.0mm. Con una media de 200.9mm, con 197mm de mediana y una desviación típica de `r round(desviacion, 2)`.
+
+
 
 ### Body_mass_g
 
 ```{r}
-class(penguins$body_mass_g)
+clasevariable = class(penguins$body_mass_g)
 ```
 
-Hace referéncia a la masa de los pingüinos, en g. Es una variable del tipo "integer". Van en un rango de 2700g a 6300g. Con una media de 4202g.
+Es una variable del tipo ´r clasevariable´.
+
+```{r}
+summary(penguins$body_mass_g)
+desviacion = sd(na.omit(penguins$body_mass_g))
+```
+
+Hace referéncia al peso de los pingüinos, en g. Va en un rango de 2700g a 6300g. Con una media de 4202g, con 4050g de mediana y una desviación típica de `r round(desviacion, 2)`.
 
 ### Sex
 
 ```{r}
-class(penguins$sex)
+clasevariable = class(penguins$sex)
 ```
 
-Hace referéncia al sexo cromosómico de los pingüinos. Es una variable de tipo "factor", con los valores de Macho y Hembra.
+Es una variable del tipo ´r clasevariable´. Hace referéncia al sexo cromosómico de los pingüinos.
+
+```{r}
+summary(penguins$sex)
+```
+Podemos observar que hay 165 observaciones de hembras, y 168 observaciones de machos. 
 
 ### Year
 
 ```{r}
-class(penguins$year)
+clasevariable = class(penguins$year)
 ```
 
-Hace referéncia al año de nacimiento de los pingüinos. Va del año 2007 al 2009. Es una variable de tipo "integer"; para trabajar mejor con esta variable la vamos a pasar a tipo "factor".
+Es una variable del tipo ´r clasevariable´. Hace referéncia al año en que nacieron los pingüinos. Observemso que esta variable tendría más sentido tratarla como factor, y para ejectura el summary lo trataremos como tal.
 
 ```{r}
-penguins$year = as.factor(penguins$year)
+summary(as.factor(penguins$year))
 ```
+Podemos observar que los pingüinos, del estudio, nacieron en 3 años diferentes; 2007, 2008, 2009.
+
+
+
+## Veamos ahora algunos gráficos:
+
+```{r}
+par(mfrow=c(1,4), mar=c(0,1,2,1))
+
+nAdelie = length(which(penguins$species == "Adelie"))
+nChinstrap = length(which(penguins$species == "Chinstrap"))
+nGentoo = length(which(penguins$species == "Gentoo"))
+slices = c(nAdelie, nChinstrap, nGentoo)
+lbls = c(nAdelie, nChinstrap, nGentoo)
+
+pie(slices, main = "Espécie", labels = lbls, col = c("deepskyblue", "darkorange", "chartreuse3"))
+legend("top", c("Adelie", "Chinstrap", "Gentoo"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
+
+
+nBiscoe = length(which(penguins$island == "Biscoe"))
+nDream = length(which(penguins$island == "Dream"))
+nTorgersen = length(which(penguins$island == "Torgersen"))
+slices = c(nBiscoe, nDream, nTorgersen)
+lbls = c(nBiscoe, nDream, nTorgersen)
+
+pie(slices, main = "Isla", labels = lbls, col = c("deepskyblue", "darkorange", "chartreuse3"))
+legend("top", c("Biscoe", "Dream", "Torgersen"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
+
+
+nFemale = length(which(penguins$sex == "female"))
+nMale = length(which(penguins$sex == "male"))
+slices = c(nFemale, nMale)
+lbls = c(nFemale, nMale)
+
+pie(slices, main = "Sexo", labels = lbls, col = c("deepskyblue", "darkorange"))
+legend("top", c("Hembra", "Macho"), cex = 1, fill = c("deepskyblue", "darkorange"))
+
+
+n2007 = length(which(penguins$year == "2007"))
+n2008 = length(which(penguins$year == "2008"))
+n2009 = length(which(penguins$year == "2009"))
+slices = c(n2007, n2008, n2009)
+lbls = c(n2007, n2008, n2009)
+
+pie(slices, main = "Año de nacimiento", labels = lbls, col = c("deepskyblue", "darkorange", "chartreuse3"))
+legend("top", c("2007", "2008", "2009"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
+```
+
 
 ## Estudio inferencial
 
