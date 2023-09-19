@@ -1,11 +1,11 @@
 ---
-title: "Entrega1"
-autor: "Ángel García, Arnau Piferrer, Guillem Serra"
+title: "Entrega 1"
+author: "Ángel García, Arnau Piferrer, Guillem Serra"
 format: html
 editor: visual
 ---
 
-Este es el [repositorio](https://github.com/GSMir/Entrega1.git) dónde se puede encontrar todo el trabajo realizado en este proyecto.
+Este es el [repositorio](https://github.com/GSMir/Entrega1.git) de GitHub dónde se puede encontrar todo el trabajo realizado en este proyecto.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -151,8 +151,11 @@ Podemos observar que los pingüinos, del estudio, nacieron en 3 años diferentes
 
 ## Veamos ahora algunos gráficos:
 
+
+
+### Gráficos generales
 ```{r}
-par(mfrow=c(1,4), mar=c(0,1,2,1))
+par(mfrow = c(1, 4), mar = c(0, 1, 2, 1))
 
 nAdelie = length(which(penguins$species == "Adelie"))
 nChinstrap = length(which(penguins$species == "Chinstrap"))
@@ -194,79 +197,125 @@ legend("top", c("2007", "2008", "2009"), cex = 1, fill = c("deepskyblue", "darko
 ```
 
 
-## Estudio inferencial
-
-### Media de la longitud de los picos
-
-
-Vamos a hacer un boxplot para comprobar si hay diferencias significativas entre las medias de las longitudes de los picos en referencia a las especies de pingüinos.
-
+### Espécies vs islas
 ```{r}
-boxplot(penguins$bill_length_mm~penguins$species,ylab = "Longitud del pico",xlab = "Especies")
-```
-Observamos que la mediana de Adelie es bastante más pequeña que el resto, vamos a comprobarlo mediante un t.test.
+par(mfrow = c(1, 3), mar=c(0, 1.5, 2, 1.5))
 
-```{r}
-t.test(penguins$bill_length_mm[penguins$species=="Adelie"],penguins$bill_length_mm[penguins$species=="Gentoo"],conf.level = 0.95,alternative = "less",paired = FALSE,var.equal = FALSE)
-
-t.test(penguins$bill_length_mm[penguins$species=="Adelie"],penguins$bill_length_mm[penguins$species=="Chinstrap"],conf.level = 0.95,alternative = "less",paired = FALSE,var.equal = FALSE)
-
-```
-Podemos observar que los dos t.test nos sale un p-valor mas pequeño que 0.05, por lo tanto podemos afirmar la hipótesis inicial; la media de longitud de los picos de la especia "Adelie" es más pequeña que la de las otras dos.
-
-Ahora vamos a observar si hay diferencias significativas de la longitud del pico entre una misma especie y las islas donde habitan. Primero vamos a comprobar en que islas viven las diferentes especies de pingüinos.
-
-
-```{r}
-table(penguins$island[penguins$species=="Adelie"])
-table(penguins$island[penguins$species=="Gentoo"])
-table(penguins$island[penguins$species=="Chinstrap"])
-```
-Observamos que la única especie que habita en más de una isla es la "Adelie", por lo tanto realizamos un boxplot de las longitudes del pico centrándonos en esa especie y las islas donde habitan.
-
-```{r}
-boxplot(penguins$bill_length_mm[penguins$species=="Adelie"]~penguins$island[penguins$species=="Adelie"],ylab = "Longitud del pico de Adelie",xlab = "Islas")
-```
-
-No podemos obervar diferencias significativas.
-
-
-
-
-
-
-
-```{r, echo=FALSE}
-par(mfrow=c(1,3), mar=c(0,1.5,2,1.5))
-
-islandBiscoe=length(which(penguins$island=="Biscoe" & penguins$species=="Adelie"))
-islandDream=length(which(penguins$island=="Dream" & penguins$species=="Adelie"))
-islandTorgersen=length(which(penguins$island=="Torgersen" & penguins$species=="Adelie"))
+islandBiscoe = length(which(penguins$island == "Biscoe" & penguins$species == "Adelie"))
+islandDream = length(which(penguins$island == "Dream" & penguins$species == "Adelie"))
+islandTorgersen = length(which(penguins$island == "Torgersen" & penguins$species == "Adelie"))
 slices = c(islandBiscoe, islandDream, islandTorgersen)
 
-pie(slices, main="Adelie", labels="",col=c("deepskyblue", "darkorange", "chartreuse3"))
-legend("top", c("Biscoe", "Dream", "Torgersen"),cex=1, fill=c("deepskyblue", "darkorange", "chartreuse3"))
+pie(slices, main = "Adelie", labels = "", col = c("deepskyblue", "darkorange", "chartreuse3"))
+legend("top", c("Biscoe", "Dream", "Torgersen"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
 
 
-islandBiscoe=length(which(penguins$island=="Biscoe" & penguins$species=="Chinstrap"))
-islandDream=length(which(penguins$island=="Dream" & penguins$species=="Chinstrap"))
-islandTorgersen=length(which(penguins$island=="Torgersen" & penguins$species=="Chinstrap"))
+islandBiscoe = length(which(penguins$island == "Biscoe" & penguins$species == "Chinstrap"))
+islandDream = length(which(penguins$island == "Dream" & penguins$species == "Chinstrap"))
+islandTorgersen = length(which(penguins$island == "Torgersen" & penguins$species == "Chinstrap"))
 slices = c(islandBiscoe, islandDream, islandTorgersen)
 
-pie(slices, main="Chinstrap",labels="",col=c("deepskyblue", "darkorange", "chartreuse3"))
-legend("top", c("Biscoe", "Dream", "Torgersen"),cex=1, fill=c("deepskyblue", "darkorange", "chartreuse3"))
+pie(slices, main = "Chinstrap", labels = "", col = c("deepskyblue", "darkorange", "chartreuse3"))
+legend("top", c("Biscoe", "Dream", "Torgersen"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
 
 
-islandBiscoe=length(which(penguins$island=="Biscoe" & penguins$species=="Gentoo"))
-islandDream=length(which(penguins$island=="Dream" & penguins$species=="Gentoo"))
-islandTorgersen=length(which(penguins$island=="Torgersen" & penguins$species=="Gentoo"))
+islandBiscoe = length(which(penguins$island == "Biscoe" & penguins$species == "Gentoo"))
+islandDream = length(which(penguins$island == "Dream" & penguins$species == "Gentoo"))
+islandTorgersen = length(which(penguins$island == "Torgersen" & penguins$species == "Gentoo"))
 slices = c(islandBiscoe, islandDream, islandTorgersen)
 
-pie(slices, main="Gentoo",labels="",col=c("deepskyblue", "darkorange", "chartreuse3"))
-legend("top", c("Biscoe", "Dream", "Torgersen"),cex=1, fill=c("deepskyblue", "darkorange", "chartreuse3"))
+pie(slices, main = "Gentoo", labels = "", col = c("deepskyblue", "darkorange", "chartreuse3"))
+legend("top", c("Biscoe", "Dream", "Torgersen"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
+```
+
+
+### Espécies vs sexo
+```{r}
+par(mfrow = c(1, 3), mar = c(0, 1.5, 2, 1.5))
+
+penF = length(which(penguins$sex == "female" & penguins$species == "Adelie"))
+penM = length(which(penguins$sex == "male" & penguins$species == "Adelie"))
+slices = c(penF, penM)
+
+pie(slices, main = "Adelie", labels = "", col = c("deepskyblue", "darkorange"))
+legend("top", c("Female", "Male"), cex = 1, fill = c("deepskyblue", "darkorange"))
+
+
+penF = length(which(penguins$sex == "female" & penguins$species == "Chinstrap"))
+penM = length(which(penguins$sex == "male" & penguins$species == "Chinstrap"))
+slices = c(penF, penM)
+
+pie(slices, main = "Chinstrap", labels = "", col = c("deepskyblue", "darkorange"))
+legend("top", c("Female", "Male"), cex = 1, fill = c("deepskyblue", "darkorange"))
+
+
+penF = length(which(penguins$sex == "female" & penguins$species == "Gentoo"))
+penM = length(which(penguins$sex == "male" & penguins$species == "Gentoo"))
+slices = c(penF, penM)
+
+pie(slices, main="Gentoo", labels = "", col = c("deepskyblue", "darkorange"))
+legend("top", c("Female", "Male"), cex = 1, fill = c("deepskyblue", "darkorange"))
+```
+
+
+### Espécies vs año de nacimiento
+```{r}
+par(mfrow = c(1, 3), mar = c(0, 1.5, 2, 1.5))
+
+anyo2007 = length(which(penguins$year == "2007" & penguins$species == "Adelie"))
+anyo2008 = length(which(penguins$year == "2008" & penguins$species == "Adelie"))
+anyo2009 = length(which(penguins$year == "2009" & penguins$species == "Adelie"))
+slices = c(anyo2007, anyo2008, anyo2009)
+
+pie(slices, main = "Adelie", labels = "", col = c("deepskyblue", "darkorange", "chartreuse3"))
+legend("top", c("2007", "2008", "2009"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
+
+
+anyo2007 = length(which(penguins$year == "2007" & penguins$species == "Chinstrap"))
+anyo2008 = length(which(penguins$year == "2008" & penguins$species == "Chinstrap"))
+anyo2009 = length(which(penguins$year == "2009" & penguins$species == "Chinstrap"))
+slices = c(anyo2007, anyo2008, anyo2009)
+
+pie(slices, main = "Chinstrap", labels = "", col = c("deepskyblue", "darkorange", "chartreuse3"))
+legend("top", c("2007", "2008", "2009"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
+
+
+anyo2007 = length(which(penguins$year == "2007" & penguins$species == "Gentoo"))
+anyo2008 = length(which(penguins$year == "2008" & penguins$species == "Gentoo"))
+anyo2009 = length(which(penguins$year == "2009" & penguins$species == "Gentoo"))
+slices = c(anyo2007, anyo2008, anyo2009)
+
+pie(slices, main = "Gentoo", labels = "",col = c("deepskyblue", "darkorange", "chartreuse3"))
+legend("top", c("2007", "2008", "2009"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
 ```
 
 
 
+### Gráficos de medianas
 
 
+Mediana de la longitud de los picos por espécie.
+```{r}
+boxplot(penguins$bill_length_mm ~ penguins$species, ylab = "Longitud del pico", xlab = "Especies")
+```
+Parece que la media de la longitud de los picos de Adelie es más pequeña que el resto de las otras dos, aunque habría que realizar contrastos de hipotesis para confirmarlo.
+
+
+Mediana de la amplitud de los picos por espécies
+```{r}
+boxplot(penguins$bill_depth_mm ~ penguins$species, ylab = "Amplitud del pico", xlab = "Especies")
+```
+Parece que la amplitud de los picos de Gentoo es más pequeña que las otras dos, aunque deberíamos realizar un contraste de hipotesi para confirmarlo.
+
+
+Mediana de la longitud de las alas por espécies
+```{r}
+boxplot(penguins$flipper_length_mm ~ penguins$species, ylab = "Longitud de las alas", xlab = "Especies")
+```
+Parece que la longitud de las alas de Gentoo es más grande que las otras dos, aunque deberíamos realizar un contraste de hipotesi para confirmarlo.
+
+Mediana de la masa corporal de los pingüinos por espécies
+```{r}
+boxplot(penguins$body_mass_g ~ penguins$species, ylab = "Masa corporal del pingüino", xlab = "Especies")
+```
+Parece que la masa corporal de los Gentoo es superior a las otras dos, aunque deberíamos realizar un contraste de hipotesi para confirmarlo.

@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ángel García, Arnau Piferrer, Guillem Serra">
 
-<title>Entrega1</title>
+<title>Entrega 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -45,13 +46,19 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Entrega1</h1>
+<h1 class="title">Entrega 1</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ángel García, Arnau Piferrer, Guillem Serra </p>
+          </div>
+  </div>
     
   
     
@@ -60,7 +67,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Este es el <a href="https://github.com/GSMir/Entrega1.git">repositorio</a> dónde se puede encontrar todo el trabajo realizado en este proyecto.</p>
+<p>Este es el <a href="https://github.com/GSMir/Entrega1.git">repositorio</a> de GitHub dónde se puede encontrar todo el trabajo realizado en este proyecto.</p>
 <p>Hay 344 observaciones de pingüinos, y 8 variables diferentes.</p>
 <section id="vamos-a-estudiar-cada-una-de-las-variables" class="level2">
 <h2 class="anchored" data-anchor-id="vamos-a-estudiar-cada-una-de-las-variables">Vamos a estudiar cada una de las variables:</h2>
@@ -164,82 +171,68 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="veamos-ahora-algunos-gráficos" class="level2">
 <h2 class="anchored" data-anchor-id="veamos-ahora-algunos-gráficos">Veamos ahora algunos gráficos:</h2>
+<section id="gráficos-generales" class="level3">
+<h3 class="anchored" data-anchor-id="gráficos-generales">Gráficos generales</h3>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="Entrega1_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="estudio-inferencial" class="level2">
-<h2 class="anchored" data-anchor-id="estudio-inferencial">Estudio inferencial</h2>
-<section id="media-de-la-longitud-de-los-picos" class="level3">
-<h3 class="anchored" data-anchor-id="media-de-la-longitud-de-los-picos">Media de la longitud de los picos</h3>
-<p>Vamos a hacer un boxplot para comprobar si hay diferencias significativas entre las medias de las longitudes de los picos en referencia a las especies de pingüinos.</p>
+<section id="espécies-vs-islas" class="level3">
+<h3 class="anchored" data-anchor-id="espécies-vs-islas">Espécies vs islas</h3>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="Entrega1_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Observamos que la mediana de Adelie es bastante más pequeña que el resto, vamos a comprobarlo mediante un t.test.</p>
+</section>
+<section id="espécies-vs-sexo" class="level3">
+<h3 class="anchored" data-anchor-id="espécies-vs-sexo">Espécies vs sexo</h3>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  penguins$bill_length_mm[penguins$species == "Adelie"] and penguins$bill_length_mm[penguins$species == "Gentoo"]
-t = -24.725, df = 242.58, p-value &lt; 2.2e-16
-alternative hypothesis: true difference in means is less than 0
-95 percent confidence interval:
-      -Inf -8.131593
-sample estimates:
-mean of x mean of y 
- 38.79139  47.50488 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  penguins$bill_length_mm[penguins$species == "Adelie"] and penguins$bill_length_mm[penguins$species == "Chinstrap"]
-t = -21.865, df = 106.97, p-value &lt; 2.2e-16
-alternative hypothesis: true difference in means is less than 0
-95 percent confidence interval:
-      -Inf -9.280348
-sample estimates:
-mean of x mean of y 
- 38.79139  48.83382 </code></pre>
+<div class="cell-output-display">
+<p><img src="Entrega1_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Podemos observar que los dos t.test nos sale un p-valor mas pequeño que 0.05, por lo tanto podemos afirmar la hipótesis inicial; la media de longitud de los picos de la especia “Adelie” es más pequeña que la de las otras dos.</p>
-<p>Ahora vamos a observar si hay diferencias significativas de la longitud del pico entre una misma especie y las islas donde habitan. Primero vamos a comprobar en que islas viven las diferentes especies de pingüinos.</p>
+</section>
+<section id="espécies-vs-año-de-nacimiento" class="level3">
+<h3 class="anchored" data-anchor-id="espécies-vs-año-de-nacimiento">Espécies vs año de nacimiento</h3>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-   Biscoe     Dream Torgersen 
-       44        56        52 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-   Biscoe     Dream Torgersen 
-      124         0         0 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-   Biscoe     Dream Torgersen 
-        0        68         0 </code></pre>
+<div class="cell-output-display">
+<p><img src="Entrega1_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Observamos que la única especie que habita en más de una isla es la “Adelie”, por lo tanto realizamos un boxplot de las longitudes del pico centrándonos en esa especie y las islas donde habitan.</p>
+</section>
+<section id="gráficos-de-medianas" class="level3">
+<h3 class="anchored" data-anchor-id="gráficos-de-medianas">Gráficos de medianas</h3>
+<p>Mediana de la longitud de los picos por espécie.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="Entrega1_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>No podemos obervar diferencias significativas.</p>
+<p>Parece que la media de la longitud de los picos de Adelie es más pequeña que el resto de las otras dos, aunque habría que realizar contrastos de hipotesis para confirmarlo.</p>
+<p>Mediana de la amplitud de los picos por espécies</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="Entrega1_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>Parece que la amplitud de los picos de Gentoo es más pequeña que las otras dos, aunque deberíamos realizar un contraste de hipotesi para confirmarlo.</p>
+<p>Mediana de la longitud de las alas por espécies</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Entrega1_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Parece que la longitud de las alas de Gentoo es más grande que las otras dos, aunque deberíamos realizar un contraste de hipotesi para confirmarlo.</p>
+<p>Mediana de la masa corporal de los pingüinos por espécies</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Entrega1_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Parece que la masa corporal de los Gentoo es superior a las otras dos, aunque deberíamos realizar un contraste de hipotesi para confirmarlo.</p>
 </section>
 </section>
 
