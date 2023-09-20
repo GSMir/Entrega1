@@ -11,7 +11,6 @@ Este es el [repositorio](https://github.com/GSMir/Entrega1.git) de GitHub dónde
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-
 ```{r cargar-librerias}
 #install.packages("palmerpenguins",dep=TRUE)
 library("palmerpenguins")
@@ -22,17 +21,17 @@ nvariables = length(penguins)
 nobservaciones = nrow(penguins)
 ```
 
-
 Hay `r nobservaciones` observaciones de pingüinos, y `r nvariables` variables diferentes.
 
 ## Vamos a estudiar cada una de las variables:
 
 Primero de todo veamos que variables tenemos
+
 ```{r}
 ls(penguins)
 ```
-Ahora hagamos un estudio de cada una de las variables.
 
+Ahora hagamos un estudio de cada una de las variables.
 
 ### Species
 
@@ -45,7 +44,8 @@ Es una variable del tipo ´r clasevariable´. Hace referéncia la espécie del p
 ```{r}
 summary(penguins$species)
 ```
-Podemos observar que hay 3 espécies diferentes, "Adelie", "Chinstrap" y "Gentoo". 
+
+Podemos observar que hay 3 espécies diferentes, "Adelie", "Chinstrap" y "Gentoo".
 
 ### Island
 
@@ -58,6 +58,7 @@ Es una variable del tipo ´r clasevariable´. Hace referéncia a la isla en la q
 ```{r}
 summary(penguins$island)
 ```
+
 Podemos observar que hay 3 islas diferentes, "Biscoe", "Dream" y "Torgersen".
 
 ### Bill_length_mm
@@ -72,6 +73,7 @@ Es una variable del tipo ´r clasevariable´.
 summary(penguins$bill_length_mm)
 desviacion = sd(na.omit(penguins$bill_length_mm))
 ```
+
 Hace referéncia a la longitud del pico de los pingüinos, en mm. Va en un rango de 32.1mm a 59.6mm. Con una media de 43.92mm, con 44.45mm de mediana, y una desviación típica de `r round(desviacion, 2)`.
 
 ### Bill_depth_mm
@@ -104,8 +106,6 @@ desviacion = sd(na.omit(penguins$flipper_length_mm))
 
 Hace referéncia a la longitud de las aletas de los pingüinos, en mm. Va en un rango de 172.0mm a 231.0mm. Con una media de 200.9mm, con 197mm de mediana y una desviación típica de `r round(desviacion, 2)`.
 
-
-
 ### Body_mass_g
 
 ```{r}
@@ -132,7 +132,8 @@ Es una variable del tipo ´r clasevariable´. Hace referéncia al sexo cromosóm
 ```{r}
 summary(penguins$sex)
 ```
-Podemos observar que hay 165 observaciones de hembras, y 168 observaciones de machos. 
+
+Podemos observar que hay 165 observaciones de hembras, y 168 observaciones de machos.
 
 ### Year
 
@@ -145,15 +146,13 @@ Es una variable del tipo ´r clasevariable´. Hace referéncia al año en que na
 ```{r}
 summary(as.factor(penguins$year))
 ```
+
 Podemos observar que los pingüinos, del estudio, nacieron en 3 años diferentes; 2007, 2008, 2009.
-
-
 
 ## Veamos ahora algunos gráficos:
 
-
-
 ### Gráficos generales
+
 ```{r}
 par(mfrow = c(1, 4), mar = c(0, 1, 2, 1))
 
@@ -196,8 +195,8 @@ pie(slices, main = "Año de nacimiento", labels = lbls, col = c("deepskyblue", "
 legend("top", c("2007", "2008", "2009"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
 ```
 
-
 ### Espécies vs islas
+
 ```{r}
 par(mfrow = c(1, 3), mar=c(0, 1.5, 2, 1.5))
 
@@ -228,8 +227,8 @@ pie(slices, main = "Gentoo", labels = "", col = c("deepskyblue", "darkorange", "
 legend("top", c("Biscoe", "Dream", "Torgersen"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
 ```
 
-
 ### Espécies vs sexo
+
 ```{r}
 par(mfrow = c(1, 3), mar = c(0, 1.5, 2, 1.5))
 
@@ -257,8 +256,8 @@ pie(slices, main="Gentoo", labels = "", col = c("deepskyblue", "darkorange"))
 legend("top", c("Female", "Male"), cex = 1, fill = c("deepskyblue", "darkorange"))
 ```
 
-
 ### Espécies vs año de nacimiento
+
 ```{r}
 par(mfrow = c(1, 3), mar = c(0, 1.5, 2, 1.5))
 
@@ -289,33 +288,38 @@ pie(slices, main = "Gentoo", labels = "",col = c("deepskyblue", "darkorange", "c
 legend("top", c("2007", "2008", "2009"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
 ```
 
-
-
 ### Gráficos de medianas
 
-
 Mediana de la longitud de los picos por espécie.
+
 ```{r}
 boxplot(penguins$bill_length_mm ~ penguins$species, ylab = "Longitud del pico", xlab = "Especies")
 ```
+
 Parece que la media de la longitud de los picos de Adelie es más pequeña que el resto de las otras dos, aunque habría que realizar contrastos de hipotesis para confirmarlo.
 
-
 Mediana de la amplitud de los picos por espécies
+
 ```{r}
 boxplot(penguins$bill_depth_mm ~ penguins$species, ylab = "Amplitud del pico", xlab = "Especies")
 ```
+
 Parece que la amplitud de los picos de Gentoo es más pequeña que las otras dos, aunque deberíamos realizar un contraste de hipotesi para confirmarlo.
 
-
 Mediana de la longitud de las alas por espécies
+
 ```{r}
 boxplot(penguins$flipper_length_mm ~ penguins$species, ylab = "Longitud de las alas", xlab = "Especies")
 ```
+
 Parece que la longitud de las alas de Gentoo es más grande que las otras dos, aunque deberíamos realizar un contraste de hipotesi para confirmarlo.
 
 Mediana de la masa corporal de los pingüinos por espécies
+
 ```{r}
 boxplot(penguins$body_mass_g ~ penguins$species, ylab = "Masa corporal del pingüino", xlab = "Especies")
 ```
-Parece que la masa corporal de los Gentoo es superior a las otras dos, aunque deberíamos realizar un contraste de hipotesi para confirmarlo.
+
+Parece que la masa corporal de los Gentoo es superior a las otras dos, aunque deberíamos realizar un contraste de hipotesis para confirmarlo. 
+
+
