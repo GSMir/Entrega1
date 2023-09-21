@@ -39,7 +39,7 @@ Ahora hacemos un estudio de cada una de las variables.
 clasevariable = class(penguins$species)
 ```
 
-Es una variable del tipo ´r clasevariable´. Hace referéncia a la especie del pingüino.
+Es una variable del tipo `r clasevariable`. Hace referéncia a la especie del pingüino.
 
 ```{r}
 summary(penguins$species)
@@ -53,7 +53,7 @@ Podemos observar que hay 3 especies diferentes, "Adelie", "Chinstrap" y "Gentoo"
 clasevariable = class(penguins$island)
 ```
 
-Es una variable del tipo ´r clasevariable´. Hace referéncia a la isla en la que habitan los pingüinos
+Es una variable del tipo `r clasevariable`. Hace referéncia a la isla en la que habitan los pingüinos
 
 ```{r}
 summary(penguins$island)
@@ -67,7 +67,7 @@ Podemos observar que hay 3 islas diferentes, "Biscoe", "Dream" y "Torgersen".
 clasevariable = class(penguins$bill_length_mm)
 ```
 
-Es una variable del tipo ´r clasevariable´.
+Es una variable del tipo `r clasevariable`.
 
 ```{r}
 summary(penguins$bill_length_mm)
@@ -82,7 +82,7 @@ Hace referencia a la longitud del pico de los pingüinos, en mm. Va en un rango 
 clasevariable = class(penguins$bill_depth_mm)
 ```
 
-Es una variable del tipo ´r clasevariable´.
+Es una variable del tipo `r clasevariable`.
 
 ```{r}
 summary(penguins$bill_depth_mm)
@@ -97,7 +97,7 @@ Hace referencia a la amplitud del pico de los pingüinos, en mm. Va en un rango 
 clasevariable = class(penguins$flipper_length_mm)
 ```
 
-Es una variable del tipo ´r clasevariable´.
+Es una variable del tipo `r clasevariable`.
 
 ```{r}
 summary(penguins$flipper_length_mm)
@@ -112,7 +112,7 @@ Hace referencia a la longitud de las aletas de los pingüinos, en mm. Va en un r
 clasevariable = class(penguins$body_mass_g)
 ```
 
-Es una variable del tipo ´r clasevariable´.
+Es una variable del tipo `r clasevariable`.
 
 ```{r}
 summary(penguins$body_mass_g)
@@ -127,7 +127,7 @@ Hace referencia al peso de los pingüinos, en g. Va en un rango de 2700g a 6300g
 clasevariable = class(penguins$sex)
 ```
 
-Es una variable del tipo ´r clasevariable´. Hace referencia al sexo cromosómico de los pingüinos.
+Es una variable del tipo `r clasevariable`. Hace referencia al sexo cromosómico de los pingüinos.
 
 ```{r}
 summary(penguins$sex)
@@ -141,13 +141,13 @@ Podemos observar que hay 165 observaciones de hembras, y 168 observaciones de ma
 clasevariable = class(penguins$year)
 ```
 
-Es una variable del tipo ´r clasevariable´. Hace referencia al año en que nacieron los pingüinos. Observemos que esta variable tendría más sentido tratarla como factor, y para ejecutar el summary lo trataremos como tal.
+Es una variable del tipo `r clasevariable`. Hace referencia al año en que se recogieron los datos del pingüino. Observemos que esta variable tendría más sentido tratarla como factor, y para ejecutar el summary lo trataremos como tal.
 
 ```{r}
 summary(as.factor(penguins$year))
 ```
 
-Podemos observar que los pingüinos, del estudio fueron observados a lo largo de 3 años diferentes; 2007, 2008, 2009.
+Podemos observar que los datos de los pingüinos, del estudio, fueron recogidos a lo largo de 3 años diferentes; 2007, 2008, 2009.
 
 ## Veamos ahora algunos gráficos:
 
@@ -191,7 +191,7 @@ n2009 = length(which(penguins$year == "2009"))
 slices = c(n2007, n2008, n2009)
 lbls = c(n2007, n2008, n2009)
 
-pie(slices, main = "Año de nacimiento", labels = lbls, col = c("deepskyblue", "darkorange", "chartreuse3"))
+pie(slices, main = "Año de recolección", labels = lbls, col = c("deepskyblue", "darkorange", "chartreuse3"))
 legend("top", c("2007", "2008", "2009"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
 ```
 
@@ -321,6 +321,8 @@ boxplot(penguins$body_mass_g ~ penguins$species, ylab = "Masa corporal del ping�
 ```
 
 Otro rasgo característico de los Gentoo sería la masa, que se puede ver en el gráfico que, por lo general, será mayor que la de Adelie o Chinstrap. Al igual que antes, de las 3 especies, esperaríamos que los Gentoo sean los más pesados.
+
+## Conclusión
 
 En definitiva, algunas conclusiones obtenidas sobre el conjunto de datos serían:
 
