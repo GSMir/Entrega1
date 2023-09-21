@@ -25,13 +25,13 @@ Hay `r nobservaciones` observaciones de pingüinos, y `r nvariables` variables d
 
 ## Vamos a estudiar cada una de las variables:
 
-Primero de todo veamos que variables tenemos
+Primero de todo, veamos qué variables tenemos:
 
 ```{r}
 ls(penguins)
 ```
 
-Ahora hagamos un estudio de cada una de las variables.
+Ahora hacemos un estudio de cada una de las variables.
 
 ### Species
 
@@ -39,13 +39,13 @@ Ahora hagamos un estudio de cada una de las variables.
 clasevariable = class(penguins$species)
 ```
 
-Es una variable del tipo ´r clasevariable´. Hace referéncia la espécie del pingüino.
+Es una variable del tipo ´r clasevariable´. Hace referéncia a la especie del pingüino.
 
 ```{r}
 summary(penguins$species)
 ```
 
-Podemos observar que hay 3 espécies diferentes, "Adelie", "Chinstrap" y "Gentoo".
+Podemos observar que hay 3 especies diferentes, "Adelie", "Chinstrap" y "Gentoo".
 
 ### Island
 
@@ -53,7 +53,7 @@ Podemos observar que hay 3 espécies diferentes, "Adelie", "Chinstrap" y "Gentoo
 clasevariable = class(penguins$island)
 ```
 
-Es una variable del tipo ´r clasevariable´. Hace referéncia a la isla en la que viven los pingüinos
+Es una variable del tipo ´r clasevariable´. Hace referéncia a la isla en la que habitan los pingüinos
 
 ```{r}
 summary(penguins$island)
@@ -74,7 +74,7 @@ summary(penguins$bill_length_mm)
 desviacion = sd(na.omit(penguins$bill_length_mm))
 ```
 
-Hace referéncia a la longitud del pico de los pingüinos, en mm. Va en un rango de 32.1mm a 59.6mm. Con una media de 43.92mm, con 44.45mm de mediana, y una desviación típica de `r round(desviacion, 2)`.
+Hace referencia a la longitud del pico de los pingüinos, en mm. Va en un rango de 32.1mm a 59.6mm. Con una media de 43.92mm, con 44.45mm de mediana, y una desviación típica de `r round(desviacion, 2)`.
 
 ### Bill_depth_mm
 
@@ -89,7 +89,7 @@ summary(penguins$bill_depth_mm)
 desviacion = sd(na.omit(penguins$bill_depth_mm))
 ```
 
-Hace referéncia a la amplitud del pico de los pingüinos, en mm. Va en un rango de 13.1mm a 21.5mm. Con una media de 17.15mm, con 17.30mm de mediana y una desviación típica de `r round(desviacion, 2)`.
+Hace referencia a la amplitud del pico de los pingüinos, en mm. Va en un rango de 13.1mm a 21.5mm. Con una media de 17.15mm, con 17.30mm de mediana y una desviación típica de `r round(desviacion, 2)`.
 
 ### Flipper_length_mm
 
@@ -104,7 +104,7 @@ summary(penguins$flipper_length_mm)
 desviacion = sd(na.omit(penguins$flipper_length_mm))
 ```
 
-Hace referéncia a la longitud de las aletas de los pingüinos, en mm. Va en un rango de 172.0mm a 231.0mm. Con una media de 200.9mm, con 197mm de mediana y una desviación típica de `r round(desviacion, 2)`.
+Hace referencia a la longitud de las aletas de los pingüinos, en mm. Va en un rango de 172.0mm a 231.0mm. Con una media de 200.9mm, con 197mm de mediana y una desviación típica de `r round(desviacion, 2)`.
 
 ### Body_mass_g
 
@@ -119,7 +119,7 @@ summary(penguins$body_mass_g)
 desviacion = sd(na.omit(penguins$body_mass_g))
 ```
 
-Hace referéncia al peso de los pingüinos, en g. Va en un rango de 2700g a 6300g. Con una media de 4202g, con 4050g de mediana y una desviación típica de `r round(desviacion, 2)`.
+Hace referencia al peso de los pingüinos, en g. Va en un rango de 2700g a 6300g. Con una media de 4202g, con 4050g de mediana y una desviación típica de `r round(desviacion, 2)`.
 
 ### Sex
 
@@ -127,7 +127,7 @@ Hace referéncia al peso de los pingüinos, en g. Va en un rango de 2700g a 6300
 clasevariable = class(penguins$sex)
 ```
 
-Es una variable del tipo ´r clasevariable´. Hace referéncia al sexo cromosómico de los pingüinos.
+Es una variable del tipo ´r clasevariable´. Hace referencia al sexo cromosómico de los pingüinos.
 
 ```{r}
 summary(penguins$sex)
@@ -141,13 +141,13 @@ Podemos observar que hay 165 observaciones de hembras, y 168 observaciones de ma
 clasevariable = class(penguins$year)
 ```
 
-Es una variable del tipo ´r clasevariable´. Hace referéncia al año en que nacieron los pingüinos. Observemso que esta variable tendría más sentido tratarla como factor, y para ejectura el summary lo trataremos como tal.
+Es una variable del tipo ´r clasevariable´. Hace referencia al año en que nacieron los pingüinos. Observemos que esta variable tendría más sentido tratarla como factor, y para ejecutar el summary lo trataremos como tal.
 
 ```{r}
 summary(as.factor(penguins$year))
 ```
 
-Podemos observar que los pingüinos, del estudio, nacieron en 3 años diferentes; 2007, 2008, 2009.
+Podemos observar que los pingüinos, del estudio fueron observados a lo largo de 3 años diferentes; 2007, 2008, 2009.
 
 ## Veamos ahora algunos gráficos:
 
@@ -195,7 +195,7 @@ pie(slices, main = "Año de nacimiento", labels = lbls, col = c("deepskyblue", "
 legend("top", c("2007", "2008", "2009"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
 ```
 
-### Espécies vs islas
+### Especies vs islas
 
 ```{r}
 par(mfrow = c(1, 3), mar=c(0, 1.5, 2, 1.5))
@@ -227,7 +227,7 @@ pie(slices, main = "Gentoo", labels = "", col = c("deepskyblue", "darkorange", "
 legend("top", c("Biscoe", "Dream", "Torgersen"), cex = 1, fill = c("deepskyblue", "darkorange", "chartreuse3"))
 ```
 
-### Espécies vs sexo
+### Especies vs sexo
 
 ```{r}
 par(mfrow = c(1, 3), mar = c(0, 1.5, 2, 1.5))
@@ -256,7 +256,7 @@ pie(slices, main="Gentoo", labels = "", col = c("deepskyblue", "darkorange"))
 legend("top", c("Female", "Male"), cex = 1, fill = c("deepskyblue", "darkorange"))
 ```
 
-### Espécies vs año de nacimiento
+### Especies vs año de avistamiento
 
 ```{r}
 par(mfrow = c(1, 3), mar = c(0, 1.5, 2, 1.5))
@@ -290,36 +290,44 @@ legend("top", c("2007", "2008", "2009"), cex = 1, fill = c("deepskyblue", "darko
 
 ### Diagrama de caja y bigotes:
 
-Mediana de la longitud de los picos por espécie.
+Mediana de la longitud de los picos por especie.
 
 ```{r}
 boxplot(penguins$bill_length_mm ~ penguins$species, ylab = "Longitud del pico", xlab = "Especies")
 ```
 
-Parece que la media de la longitud de los picos de Adelie es más pequeña que el resto de las otras dos, aunque habría que realizar contrastos de hipotesis para confirmarlo.
+A priori vemos que la mediana de la longitud de los picos de Adelie es más pequeña que el resto de las otras dos. Para confirmar que la longitud media del pico de Adelie también será inferior a la de las otras dos especies (por tener medianas y dispersiones tan diferentes), sería necesario realizar un contraste de hipótesis para confirmarlo.
 
-Mediana de la amplitud de los picos por espécies
+Mediana de la amplitud de los picos por especies:
 
 ```{r}
 boxplot(penguins$bill_depth_mm ~ penguins$species, ylab = "Amplitud del pico", xlab = "Especies")
 ```
 
-Parece que la amplitud de los picos de Gentoo es más pequeña que las otras dos, aunque deberíamos realizar un contraste de hipotesi para confirmarlo.
+Parece que la amplitud de los picos de Gentoo es más pequeña que las otras dos. Del mismo modo que antes, parece que, un rasgo distintivo de los Gentoo frente a las otras dos especies sería la amplitud del pico, que por lo general será más pequeña. Sería preciso hacer un contraste para determinarlo con mayor grado de confianza.
 
-Mediana de la longitud de las alas por espécies
+Mediana de la longitud de las alas por especies:
 
 ```{r}
 boxplot(penguins$flipper_length_mm ~ penguins$species, ylab = "Longitud de las alas", xlab = "Especies")
 ```
 
-Parece que la longitud de las alas de Gentoo es más grande que las otras dos, aunque deberíamos realizar un contraste de hipotesi para confirmarlo.
+A partir del diagrama se puede deducir que, de encontrarnos un ejemplar de cada especie, lo más probable es que el Gentoo sea aquel con las alas más grandes.
 
-Mediana de la masa corporal de los pingüinos por espécies
+Mediana de la masa corporal de los pingüinos por especies:
 
 ```{r}
 boxplot(penguins$body_mass_g ~ penguins$species, ylab = "Masa corporal del pingüino", xlab = "Especies")
 ```
 
-Parece que la masa corporal de los Gentoo es superior a las otras dos, aunque deberíamos realizar un contraste de hipotesis para confirmarlo. 
+Otro rasgo característico de los Gentoo sería la masa, que se puede ver en el gráfico que, por lo general, será mayor que la de Adelie o Chinstrap. Al igual que antes, de las 3 especies, esperaríamos que los Gentoo sean los más pesados.
 
+En definitiva, algunas conclusiones obtenidas sobre el conjunto de datos serían:
 
+1\) De las 3 especies solamente Adelie habita en todas las islas (Adelie). La especie Chinstrap es endémica de la isla Dream y la especie Gentoo únicamente habita en Biscoe.
+
+2\) Si nos encontramos varios individuos una forma de distinguir los ejemplares de Adelie frente a las demás especies es a partir de la longitud del pico, que será más corto.
+
+3\) Algunos rasgos característicos propios de los Gentoo (que nos permitiría diferenciarlo de las otras especies) son la masa elevada, el mayor tamaño de las alas y un pico más estrecho que el resto.
+
+4\) Aquellos pingüinos que no encajen ni en el perfil de Adelie ni en el de Gentoo encajará, seguramente, con los individuos de la especie Chinstrap.
